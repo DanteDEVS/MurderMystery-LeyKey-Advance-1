@@ -1,5 +1,5 @@
-name: MurderMystery
-version: 2.1
+name: MurderMysteryAdvance
+version: 2.2
 api: [3.0.0]
 author: LeyKey
 main: mm\MurderMystery
