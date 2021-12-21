@@ -8,7 +8,7 @@ use pocketmine\network\mcpe\protocol\MobEquipmentPacket;
 use pocketmine\network\mcpe\protocol\types\inventory\ItemStackWrapper;
 use pocketmine\item\Item;
 
-class SwordEntity extends Entity{
+class IronSwordEntity extends Entity{
     public const NETWORK_ID = self::ARMOR_STAND;
 
     public $width = 2.0;
