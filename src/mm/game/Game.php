@@ -27,6 +27,7 @@ use pocketmine\level\{
     Position
 };
 use pocketmine\Player;
+use pocketmine\entity\Human;
 use pocketmine\tile\Tile;
 use pocketmine\entity\projectile\Arrow;
 use pocketmine\entity\Creature;
@@ -125,9 +126,9 @@ class Game implements Listener{
         }
 
         $msg = str_replace([
-            "{players}", "{innocents}", "{detec_status}", "{role}", "{map}", "{status}"
+            "{players}", "{innocents}", "{detec_status}", "{role}", "{gt}", "{st}", "{rt}", "{map}", "{status}"
         ], [
-            count($this->players), (count($this->players) - 1), $this->getDetectiveStatus(), $this->getRole($player), $this->map->getFolderName(), $status
+            count($this->players), (count($this->players) - 1), $this->getDetectiveStatus(), $this->getRole($player), $this->task->gameTime, $this->task->startTime, $this->task->restartTime, $this->map->getFolderName(), $status
         ], $msg);
 
         $entry->objectiveName = "MurderMystery";
