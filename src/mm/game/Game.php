@@ -119,7 +119,7 @@ class Game implements Listener{
         $entry = new ScorePacketEntry();
         $packet = new SetScorePacket();
 
-        if(count($this->players) < 2){
+        if(count($this->players) < 4){
             $status = str_replace("{sec}", $this->task->startTime, $this->plugin->getConfig()->get("WaitingStatus"));
         } else {
             $status = $this->plugin->getConfig()->get("StartingStatus");
@@ -158,15 +158,15 @@ class Game implements Listener{
             $this->removeScoreboard($player);
             switch($this->phase){
                 case Game::PHASE_GAME:
-                    $this->createScoreboard($player, "§l§bMURDER MYSTERY", $this->plugin->getConfig()->get("GameScoreboard"));
+                    $this->createScoreboard($player, "§l§eMURDER MYSTERY", $this->plugin->getConfig()->get("GameScoreboard"));
                 break;
 
                 case Game::PHASE_RESTART:
-                    $this->createScoreboard($player, "§l§bMURDER MYSTERY", $this->plugin->getConfig()->get("RestartScoreboard"));
+                    $this->createScoreboard($player, "§l§eMURDER MYSTERY", $this->plugin->getConfig()->get("RestartScoreboard"));
                 break;
 
                 case Game::PHASE_LOBBY:
-                    $this->createScoreboard($player, "§l§bMURDER MYSTERY", $this->plugin->getConfig()->get("LobbyScoreboard"));
+                    $this->createScoreboard($player, "§l§eMURDER MYSTERY", $this->plugin->getConfig()->get("LobbyScoreboard"));
                 break;
             }
         }
