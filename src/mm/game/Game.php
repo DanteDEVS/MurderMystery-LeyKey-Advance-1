@@ -44,7 +44,7 @@ use pocketmine\network\mcpe\protocol\types\ScorePacketEntry;
 
 use mm\MurderMystery;
 use pocketmine\network\mcpe\protocol\PlaySoundPacket;
-use mm\utils\{Vector, SwordEntity};
+use mm\utils\{Vector, SwordEntity, DeadPlayerEntity};
 use mm\tasks\{ArrowTask, CollideTask, CooldownTask, DespawnSwordEntity, SpawnGoldTask, UpdatePlayerPositionTask};
 
 class Game implements Listener{
@@ -271,9 +271,13 @@ class Game implements Listener{
         $tp = Item::get(345, 14, 1);
         $tp->setCustomName("§r§l§aTeleporter§r");
 		$tp->setNamedTagEntry(new StringTag("MurderMystery", "tp"));
+	
+        $pa = Item::get(339, 0, 1);
+	$pa->setCustomName("§r§l§bPlay Again§r"); // Soon
 
         $inv->setItem(8, $lobby);
-        $inv->setItem(0, $tp);
+        $inv->setItem(4, $tp);
+	$inv->setItem(0, $pa);
     }
 
     public function defaultSettings(Player $player){
