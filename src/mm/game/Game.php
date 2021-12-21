@@ -163,6 +163,26 @@ class Game implements Listener{
         $packet->entries[$line] = $entry;
         $player->sendDataPacket($packet);
     }
+	
+    public function Waiting(Player $player) : void{
+        $this->phase = self::PHASE_WAITING;
+
+        if(count($this->players) < 1){
+            $this->phase = self::PHASE_WAITING
+		    
+            }
+        }
+    }        
+ 
+    public function Starting(Player $player) : void{
+        $this->phase = self::PHASE_LOBBY;
+
+        if(count($this->players) < 4){
+            $this->phase = self::PHASE_LOBBY
+		    
+            }
+        }
+    }    
 
     public function removeScoreboard(Player $player){
         $removePacket = new RemoveObjectivePacket();
