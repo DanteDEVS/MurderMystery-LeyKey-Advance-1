@@ -38,6 +38,7 @@ use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\nbt\tag\StringTag;
 use pocketmine\math\Vector3;
 use pocketmine\entity\Entity;
+use pocketmine\event\server\DataPacketReceiveEvent;
 
 use pocketmine\network\mcpe\protocol\RemoveObjectivePacket;
 use pocketmine\network\mcpe\protocol\SetDisplayObjectivePacket;
@@ -101,7 +102,24 @@ class Game implements Listener{
             $this->loadGame();
         }
     }
-
+	
+    public function onDataPacketReceive(DataPacketReceiveEvent $event) : void{
+        $packet = $event->getPacket();
+	$player = $event->getPlayer();
+	switch(true){
+	    case ($packet instanceof InventoryTransactionPacket):
+		if($packet->transactionType !== InventoryTransactionPacket::TYPE_USE_ITEM_ON_ENTITY){
+		    return;
+		}
+		$entity = $player->getServer()->findEntity($packet->trData->entityRuntimeId);
+		if(!$entity instanceof DeadPlayerEntity){
+		    return;
+		}
+		$entity->interact($player);
+		break;
+	} 
+    }	 
+	    
     public function createScoreboard(Player $player, string $title, array $entries){
         $createPacket = new SetDisplayObjectivePacket();
 
@@ -482,6 +500,16 @@ class Game implements Listener{
         unset($this->murderer);
         unset($this->detective);
     }
+	
+   public function CloseDeadBody(){
+       $this->phase = self::PHASE_RESTART
+	       
+       foreach($this->map->getEntity() as $entity){
+	   if(!$entity instanceof DeadPlayerEntity){
+	       $this->close();
+	   }
+       }
+    }	   
 
     public function isPlaying(Player $player){
         return isset($this->players[$player->getName()]);
