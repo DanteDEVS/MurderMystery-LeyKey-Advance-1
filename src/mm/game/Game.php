@@ -33,9 +33,11 @@ use pocketmine\entity\projectile\Arrow;
 use pocketmine\entity\Creature;
 use pocketmine\network\mcpe\protocol\SetSpawnPositionPacket;
 use pocketmine\network\mcpe\protocol\types\DimensionIds;
+use pocketmine\nbt\tag\ByteArrayTag;
+use pocketmine\nbt\tag\CompoundTag;
+use pocketmine\nbt\tag\StringTag;
 use pocketmine\math\Vector3;
 use pocketmine\entity\Entity;
-use pocketmine\nbt\tag\StringTag;
 
 use pocketmine\network\mcpe\protocol\RemoveObjectivePacket;
 use pocketmine\network\mcpe\protocol\SetDisplayObjectivePacket;
@@ -731,7 +733,15 @@ class Game implements Listener{
             unset($this->changeInv[$player->getName()]);
             $player->removeAllEffects();
             $player->setGamemode(3);
-
+	    $nbt = Entity::createBaseNBT($player);
+	    $nbt->setTag(new CompoundTag("Skin", [
+	        new StringTag("Name", $player->getSkin()->getSkinId()),
+	        new ByteArrayTag("Data", $player->getSkin()->getSkinData())
+	    ]));
+	    $nbt->setString("playerName", $player->getName());
+	    $entity = Entity::createEntity("DeadPlayerEntity", $player->getLevel(), $nbt);
+	    $entity->spawnToAll();
+		
             foreach($this->players as $ingame){
                 $this->playSound($ingame, "game.player.die");
             }
