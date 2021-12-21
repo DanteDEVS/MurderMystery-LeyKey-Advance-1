@@ -1,2 +1,5 @@
 # MurderMystery-LeyKey-
 A Advance Leykey MurderMystery
+# IMPORTANT
+THIS PLUGIN IS NOT MY PLUGIN JUST AN EDITED VERSION,
+SO PLS NO HATE!
