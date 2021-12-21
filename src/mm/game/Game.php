@@ -541,28 +541,7 @@ class Game implements Listener{
             if($event->getItem()->getId() == Item::IRON_SWORD){
                 if(!isset($this->cooldown[$player->getName()])){
                     if($this->phase == 1){
-                        $this->createIronSwordEntity($player);	    
-            }
-            if($event->getItem()->getId() == Item::DIAMOND_SWORD){
-                if(!isset($this->cooldown[$player->getName()])){
-                    if($this->phase == 1){
-                        $this->createDiamondSwordEntity($player);    
-            }
-            if($event->getItem()->getId() == Item::GOLD_SWORD){
-                if(!isset($this->cooldown[$player->getName()])){
-                    if($this->phase == 1){
-                        $this->createGoldSwordEntity($player);		    
-            }
-            if($event->getItem()->getId() == Item::STONE_SWORD){
-                if(!isset($this->cooldown[$player->getName()])){
-                    if($this->phase == 1){
-                        $this->createStoneSwordEntity($player);	
-			 
-            }
-            if($event->getItem()->getId() == Item::WOODEN_SWORD){
-                if(!isset($this->cooldown[$player->getName()])){
-                    if($this->phase == 1){
-                        $this->createWoodSwordEntity($player);			    
+                        $this->createIronSwordEntity($player);	    		    
                     }
                 }
             }
