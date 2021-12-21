@@ -10,8 +10,8 @@ use pocketmine\item\Item;
 class SwordEntity extends Entity{
     public const NETWORK_ID = self::ARMOR_STAND;
 
-    public $width = 1.5;
-    public $height = 1.5;
+    public $width = 2.0;
+    public $height = 2.0;
     
     protected function sendSpawnPacket(Player $player) : void{
         parent::sendSpawnPacket($player);
