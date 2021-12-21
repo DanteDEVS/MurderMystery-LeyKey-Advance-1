@@ -1,3 +1,4 @@
+VERSION: 2.4
 # MurderMystery-LeyKey-Advance
 A Advance Leykey MurderMystery
 # Features
@@ -5,8 +6,9 @@ A Advance Leykey MurderMystery
 - Scoreboard
 - Commands
 - DeadPlayerEntity
-# Not Implemented Yet
-- Bossbar
+- bossbar
+# Not Implemented yet
+- idk
 # IMPORTANT
 THIS PLUGIN IS NOT MY PLUGIN JUST AN EDITED VERSION,
 SO PLS NO HATE!
