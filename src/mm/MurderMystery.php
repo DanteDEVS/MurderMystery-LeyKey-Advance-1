@@ -10,7 +10,7 @@ use pocketmine\event\player\{PlayerInteractEvent, PlayerChatEvent};
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\entity\Entity;
 
-use mm\utils\{GameChooser, SwordEntity, Vector};
+use mm\utils\{GameChooser, SwordEntity, Vector, DeadPlayerEntity};
 use mm\provider\Provider;
 use mm\game\Game;
 
@@ -39,6 +39,7 @@ class MurderMystery extends PluginBase implements Listener{
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->provider->loadGames();
         Entity::registerEntity(SwordEntity::class, true);
+        Entity::registerEntity(DeadPlayerEntity::class, true, ["DeadPlayerEntity"]);       
         $this->prefix = $this->getConfig()->get("Prefix") . " ";
     }
 
