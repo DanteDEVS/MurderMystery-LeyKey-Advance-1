@@ -501,16 +501,16 @@ class Game implements Listener{
         unset($this->detective);
     }
 	
-   public function CloseDeadBody(){
-       $this->phase = self::PHASE_RESTART
-	       
-       foreach($this->map->getEntity() as $entity){
-	   if(!$entity instanceof DeadPlayerEntity){
-	       $this->close();
-	   }
-       }
-    }	   
+    public function CloseDeadPlayer(Player $player) : void{
+        $this->phase = self::PHASE_RESTART;
 
+        foreach($this->map->getDeadPlayerEntity() as $entity){
+            if(!$entity instanceof DeadPlayerEntity){
+                $this->close();
+            }
+        }
+    }        
+  
     public function isPlaying(Player $player){
         return isset($this->players[$player->getName()]);
     }
