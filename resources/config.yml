@@ -35,11 +35,22 @@ WaitingStatus: §cWaiting for more players...
 StartingStatus: Starting in {sec}s
 #
 # The scoreboard that gets displayed to players in the waiting lobby
+WaitingScoreboard:
+- "§7§r"
+- "§fPlayers: §a{players}/16"
+- "§r"
+- "§cWaiting for more Players...."
+- "§r§7"
+- "§fMap: §a{map}"
+- "§b"
+- "§eplay.yourserver.net"
+#
+#
 LobbyScoreboard: 
 - "§7§r"
 - "§fPlayers: §a{players}/16"
 - "§r"
-- "{status}"
+- "§fStarting in {st}s"
 - "§r§7"
 - "§fMap: §a{map}"
 - "§b"
