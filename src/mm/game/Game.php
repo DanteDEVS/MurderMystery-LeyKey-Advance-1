@@ -170,7 +170,6 @@ class Game implements Listener{
         if(count($this->players) < 1){
             $this->phase = self::PHASE_WAITING
 		    
-            }
         }
     }        
  
@@ -180,7 +179,6 @@ class Game implements Listener{
         if(count($this->players) < 4){
             $this->phase = self::PHASE_LOBBY
 		    
-            }
         }
     }    
 
