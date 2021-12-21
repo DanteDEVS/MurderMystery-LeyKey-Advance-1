@@ -116,6 +116,13 @@ class GameTask extends Task{
                         foreach($this->plugin->players as $player){
                             $player->sendMessage("§eThe game ends in §c01:00 §eminute!");
                             $player->addTitle("§c60 §eseconds left!", "§eAfter 60 seconds the murderer will lose!");
+                        }
+                    break;
+                        
+                    case 25:
+                        foreach($this->plugin->players as $player){
+                            $player->sendMessage("§eThe game ends in §c25 §eseconds!");
+                            $player->addTitle("§c25 Seconds Left!");
                             if($player !== $this->plugin->getMurderer()){
                                 $player->sendMessage("§cWatch out! §eThe murderer got a compass!");
                             } else {
