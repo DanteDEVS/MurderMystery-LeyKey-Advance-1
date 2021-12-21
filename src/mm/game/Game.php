@@ -26,7 +26,7 @@ use pocketmine\level\{
     Level,
     Position
 };
-use pocketmine\Player;
+use pocketmine\player\Player;
 use pocketmine\entity\Human;
 use pocketmine\tile\Tile;
 use pocketmine\entity\projectile\Arrow;
