@@ -905,9 +905,9 @@ class Game implements Listener{
     public function createSwordEntity(Player $player){
         $nbt = Entity::createBaseNBT(
             #$player->add(0, $player->getEyeHeight() - 1.5, 0),
-            $player->getTargetBlock(1),
+            $player->getTargetBlock(2),
             $player->getDirectionVector(),
-            $player->yaw - 75,
+            $player->yaw - 85,
             $player->pitch
         );
         
