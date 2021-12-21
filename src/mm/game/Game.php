@@ -53,7 +53,7 @@ use mm\tasks\{ArrowTask, CollideTask, CooldownTask, DespawnSwordEntity, SpawnGol
 
 class Game implements Listener{
 
-    const PHASE_WAITING = 0
+    const PHASE_WAITING = 0;
     const PHASE_LOBBY = 1;
     const PHASE_GAME = 2;
     const PHASE_RESTART = 3;
@@ -192,7 +192,7 @@ class Game implements Listener{
                 break;
 			  
 	        case Game::PHASE_WAITING:
-                    $this->createScoreboard($player, "§l§eMURDER MYSTERY", $this->plugin->getConfig()->get("LobbyScoreboard"));
+                    $this->createScoreboard($player, "§l§eMURDER MYSTERY", $this->plugin->getConfig()->get("WaitingScoreboard"));
                 break;   
 		
             }
