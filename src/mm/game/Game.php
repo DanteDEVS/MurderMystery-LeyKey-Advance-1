@@ -48,7 +48,7 @@ use pocketmine\network\mcpe\protocol\types\ScorePacketEntry;
 use xenialdan\apibossbar\BossBar;
 use mm\MurderMystery;
 use pocketmine\network\mcpe\protocol\PlaySoundPacket;
-use mm\utils\{Vector, SwordEntity, DeadPlayerEntity};
+use mm\utils\{Vector, IronSwordEntity, DiamondSwordEntity, GoldSwordEntity, WoodSwordEntity, StoneSwordEntity, DeadPlayerEntity};
 use mm\tasks\{ArrowTask, CollideTask, CooldownTask, DespawnSwordEntity, SpawnGoldTask, UpdatePlayerPositionTask};
 
 class Game implements Listener{
@@ -273,6 +273,9 @@ class Game implements Listener{
         $start = Item::get(76, 0, 1);
         $start->setCustomName("§r§l§bStart Game§r");
 		$start->setNamedTagEntry(new StringTag("MurderMystery", "start"));
+	    
+        $sd = Item::get(399, 0, 1);
+        $sd->setCustomName("§r§l§ePick ur Sword§r"); // Todo
 
         $inv->setItem(8, $lobby);
         if($player->hasPermission("murdermystery.forcestart")){
@@ -294,7 +297,7 @@ class Game implements Listener{
 		$tp->setNamedTagEntry(new StringTag("MurderMystery", "tp"));
 	
         $pa = Item::get(339, 0, 1);
-	$pa->setCustomName("§r§l§bPlay Again§r"); // Soon
+	$pa->setCustomName("§r§l§bPlay Again§r"); // Todo
 
         $inv->setItem(8, $lobby);
         $inv->setItem(4, $tp);
@@ -538,7 +541,28 @@ class Game implements Listener{
             if($event->getItem()->getId() == Item::IRON_SWORD){
                 if(!isset($this->cooldown[$player->getName()])){
                     if($this->phase == 1){
-                        $this->createSwordEntity($player);
+                        $this->createIronSwordEntity($player);	    
+            }
+            if($event->getItem()->getId() == Item::DIAMOND_SWORD){
+                if(!isset($this->cooldown[$player->getName()])){
+                    if($this->phase == 1){
+                        $this->createDiamondSwordEntity($player);    
+            }
+            if($event->getItem()->getId() == Item::GOLD_SWORD){
+                if(!isset($this->cooldown[$player->getName()])){
+                    if($this->phase == 1){
+                        $this->createGoldSwordEntity($player);		    
+            }
+            if($event->getItem()->getId() == Item::STONE_SWORD){
+                if(!isset($this->cooldown[$player->getName()])){
+                    if($this->phase == 1){
+                        $this->createStoneSwordEntity($player);	
+			 
+            }
+            if($event->getItem()->getId() == Item::WOODEN_SWORD){
+                if(!isset($this->cooldown[$player->getName()])){
+                    if($this->phase == 1){
+                        $this->createWoodSwordEntity($player);			    
                     }
                 }
             }
@@ -736,7 +760,7 @@ class Game implements Listener{
                 $event->setCancelled();
             }
         }
-    }
+    }		
 
     public function onHunger(PlayerExhaustEvent $event){
         $player = $event->getPlayer();
@@ -951,7 +975,7 @@ class Game implements Listener{
         }
     }
 
-    public function createSwordEntity(Player $player){
+    public function createIronSwordEntity(Player $player){
         $nbt = Entity::createBaseNBT(
             #$player->add(0, $player->getEyeHeight() - 1.5, 0),
             $player->getTargetBlock(2),
@@ -960,7 +984,83 @@ class Game implements Listener{
             $player->pitch
         );
         
-        $sword = new SwordEntity($player->getLevel(), $nbt);
+        $sword = new IronSwordEntity($player->getLevel(), $nbt);
+        $sword->setMotion($sword->getMotion()->multiply(1.5));
+        $sword->setPose();
+        $sword->setInvisible();
+        $sword->spawnToAll();
+        $this->plugin->getScheduler()->scheduleRepeatingTask(new CollideTask($this, $sword), 0);
+        $this->plugin->getScheduler()->scheduleDelayedTask(new DespawnSwordEntity($sword), 100);
+        $this->cooldown[$player->getName()] = microtime(true) + 7;
+    }
+	
+    public function createDiamondSwordEntity(Player $player){
+        $nbt = Entity::createBaseNBT(
+            #$player->add(0, $player->getEyeHeight() - 1.5, 0),
+            $player->getTargetBlock(2),
+            $player->getDirectionVector(),
+            $player->yaw - 85,
+            $player->pitch
+        );
+        
+        $sword = new DiamondSwordEntity($player->getLevel(), $nbt);
+        $sword->setMotion($sword->getMotion()->multiply(1.5));
+        $sword->setPose();
+        $sword->setInvisible();
+        $sword->spawnToAll();
+        $this->plugin->getScheduler()->scheduleRepeatingTask(new CollideTask($this, $sword), 0);
+        $this->plugin->getScheduler()->scheduleDelayedTask(new DespawnSwordEntity($sword), 100);
+        $this->cooldown[$player->getName()] = microtime(true) + 7;
+    }
+	
+    public function createGoldSwordEntity(Player $player){
+        $nbt = Entity::createBaseNBT(
+            #$player->add(0, $player->getEyeHeight() - 1.5, 0),
+            $player->getTargetBlock(2),
+            $player->getDirectionVector(),
+            $player->yaw - 85,
+            $player->pitch
+        );
+        
+        $sword = new GoldSwordEntity($player->getLevel(), $nbt);
+        $sword->setMotion($sword->getMotion()->multiply(1.5));
+        $sword->setPose();
+        $sword->setInvisible();
+        $sword->spawnToAll();
+        $this->plugin->getScheduler()->scheduleRepeatingTask(new CollideTask($this, $sword), 0);
+        $this->plugin->getScheduler()->scheduleDelayedTask(new DespawnSwordEntity($sword), 100);
+        $this->cooldown[$player->getName()] = microtime(true) + 7;
+    }
+	
+    public function createStoneSwordEntity(Player $player){
+        $nbt = Entity::createBaseNBT(
+            #$player->add(0, $player->getEyeHeight() - 1.5, 0),
+            $player->getTargetBlock(2),
+            $player->getDirectionVector(),
+            $player->yaw - 85,
+            $player->pitch
+        );
+        
+        $sword = new StoneSwordEntity($player->getLevel(), $nbt);
+        $sword->setMotion($sword->getMotion()->multiply(1.5));
+        $sword->setPose();
+        $sword->setInvisible();
+        $sword->spawnToAll();
+        $this->plugin->getScheduler()->scheduleRepeatingTask(new CollideTask($this, $sword), 0);
+        $this->plugin->getScheduler()->scheduleDelayedTask(new DespawnSwordEntity($sword), 100);
+        $this->cooldown[$player->getName()] = microtime(true) + 7;
+    }
+	
+    public function createWoodSwordEntity(Player $player){
+        $nbt = Entity::createBaseNBT(
+            #$player->add(0, $player->getEyeHeight() - 1.5, 0),
+            $player->getTargetBlock(2),
+            $player->getDirectionVector(),
+            $player->yaw - 85,
+            $player->pitch
+        );
+        
+        $sword = new WoodSwordEntity($player->getLevel(), $nbt);
         $sword->setMotion($sword->getMotion()->multiply(1.5));
         $sword->setPose();
         $sword->setInvisible();
