@@ -34,7 +34,7 @@ class GameTask extends Task{
         $this->plugin->scoreboard();
         switch($this->plugin->phase){
             case Game::PHASE_LOBBY:
-                if(count($this->plugin->players) >= 2){
+                if(count($this->plugin->players) >= 4){
                     switch($this->startTime){
                         case 30:
                             foreach($this->plugin->players as $player){
