@@ -5,6 +5,7 @@ namespace mm\utils;
 use pocketmine\entity\Entity;
 use pocketmine\Player;
 use pocketmine\network\mcpe\protocol\MobEquipmentPacket;
+use pocketmine\network\mcpe\protocol\types\inventory\ItemStackWrapper;
 use pocketmine\item\Item;
 
 class SwordEntity extends Entity{
@@ -17,7 +18,7 @@ class SwordEntity extends Entity{
         parent::sendSpawnPacket($player);
         $pk = new MobEquipmentPacket();
         $pk->entityRuntimeId = $this->getId();
-        $pk->item = new Item(Item::IRON_SWORD);
+        $pk->item = ItemStackWrapper::legacy(new Item(Item::IRON_SWORD));
         $pk->inventorySlot = 0;
         $pk->hotbarSlot = 0;
         $player->dataPacket($pk);
