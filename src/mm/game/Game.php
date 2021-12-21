@@ -45,6 +45,7 @@ use pocketmine\network\mcpe\protocol\SetDisplayObjectivePacket;
 use pocketmine\network\mcpe\protocol\SetScorePacket;
 use pocketmine\network\mcpe\protocol\types\ScorePacketEntry;
 
+use xenialdan\apibossbar\BossBar;
 use mm\MurderMystery;
 use pocketmine\network\mcpe\protocol\PlaySoundPacket;
 use mm\utils\{Vector, SwordEntity, DeadPlayerEntity};
@@ -312,6 +313,9 @@ class Game implements Listener{
         $this->getCoreItems($player);
         $player->setFlying(false);
         $player->setAllowFlight(false);
+	self::$bossbar = (new BossBar())->setPercentage(1);
+        self::$bossbar->setTitle(TextFormat::YELLOW . TextFormat::BOLD . "YourServerName" . TextFormat::GOLD . "Murder " . TextFormat::RED . "Mystery" . TextFormat::RESET . TextFormat::WHITE);
+        self::$bossbar->addPlayer($player);    
         unset($this->changeInv[$player->getName()]);
     }
 
@@ -330,6 +334,7 @@ class Game implements Listener{
         unset($this->changeInv[$player->getName()]);
         $player->teleport($this->plugin->getServer()->getDefaultLevel()->getSpawnLocation());
         $this->removeScoreboard($player);
+	self::$bossbar->removePlayer($player);
     }
 
     public function disconnectPlayer(Player $player, string $quitMsg = ""){
@@ -499,6 +504,7 @@ class Game implements Listener{
         }
         unset($this->murderer);
         unset($this->detective);
+	self::$bossbar->removePlayer($player);
     }
 	
     public function CloseDeadPlayer(Player $player) : void{
@@ -761,6 +767,7 @@ class Game implements Listener{
             unset($this->changeInv[$player->getName()]);
             $player->removeAllEffects();
             $player->setGamemode(3);
+	    self::$bossbar->removePlayer($player);
 	    $nbt = Entity::createBaseNBT($player);
 	    $nbt->setTag(new CompoundTag("Skin", [
 	        new StringTag("Name", $player->getSkin()->getSkinId()),
@@ -954,7 +961,7 @@ class Game implements Listener{
         );
         
         $sword = new SwordEntity($player->getLevel(), $nbt);
-        $sword->setMotion($sword->getMotion()->multiply(1.4));
+        $sword->setMotion($sword->getMotion()->multiply(1.5));
         $sword->setPose();
         $sword->setInvisible();
         $sword->spawnToAll();
