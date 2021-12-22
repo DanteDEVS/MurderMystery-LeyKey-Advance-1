@@ -60,6 +60,9 @@ class Game implements Listener{
     public $plugin;
     public $task;
 
+    /** @var BossBar */
+    public static $bossbar;	
+	
     public $phase = 0;
 
     public $setup = false;
