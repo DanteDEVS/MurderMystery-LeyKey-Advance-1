@@ -141,7 +141,7 @@ class Game implements Listener{
         $packet = new SetScorePacket();
 
         if(count($this->players) < 4){
-            $status = str_replace("{sec}", $this->task->startTime, $this->plugin->getConfig()->get("WaitingStatus"));
+            $status = str_replace("{st}", $this->task->startTime, $this->plugin->getConfig()->get("WaitingStatus"));
         } else {
             $status = $this->plugin->getConfig()->get("StartingStatus");
         }
@@ -1033,9 +1033,9 @@ class Game implements Listener{
     public function createWoodSwordEntity(Player $player){
         $nbt = Entity::createBaseNBT(
             #$player->add(0, $player->getEyeHeight() - 1.5, 0),
-            $player->getTargetBlock(2),
+            $player->getTargetBlock(5),
             $player->getDirectionVector(),
-            $player->yaw - 85,
+            $player->yaw - 90,
             $player->pitch
         );
         
