@@ -959,7 +959,7 @@ class Game implements Listener{
             #$player->add(0, $player->getEyeHeight() - 1.5, 0),
             $player->getTargetBlock(2),
             $player->getDirectionVector(),
-            $player->yaw - 85,
+            $player->yaw - 90,
             $player->pitch
         );
         
