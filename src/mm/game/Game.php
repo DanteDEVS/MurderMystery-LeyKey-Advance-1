@@ -39,6 +39,7 @@ use pocketmine\nbt\tag\StringTag;
 use pocketmine\math\Vector3;
 use pocketmine\entity\Entity;
 use pocketmine\event\server\DataPacketReceiveEvent;
+use pocketmine\utils\TextFormat;
 
 use pocketmine\network\mcpe\protocol\RemoveObjectivePacket;
 use pocketmine\network\mcpe\protocol\SetDisplayObjectivePacket;
