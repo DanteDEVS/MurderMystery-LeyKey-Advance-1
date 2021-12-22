@@ -8,7 +8,7 @@ use mm\utils\IronSwordEntity;
 
 class CollideTask extends Task{
 
-    public function __construct(Game $plugin, SwordEntity $sword){
+    public function __construct(Game $plugin, IronSwordEntity $sword){
         $this->plugin = $plugin;
         $this->sword = $sword;
     }
