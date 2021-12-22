@@ -14,7 +14,7 @@
 # {role} - The players' role
 # {map} - The map of the game
 # {status} - Status of the game (Waiting for players / Starting in)
-# {sec} - Time until the game starts
+# {st} - Time until the game starts
 # {gt} - Time until the games ends
 # {rt} - Time until the game restarts when game is over
 # \n - Line break
@@ -32,15 +32,15 @@ GoldSpawns: 16
 WaitingStatus: §cWaiting for more players...
 #
 # Starting status
-StartingStatus: Starting in {sec}s
-#
+StartingStatus: §aStarting in {st}s
+# if
 # The scoreboard that gets displayed to players in the waiting lobby
 LobbyScoreboard: 
 - "§7§r"
 - "§fPlayers: §a{players}/16"
-- "§r"
-- "{status}"
 - "§r§7"
+- "§f{status}"
+- "§b"
 - "§fMap: §a{map}"
 - "§b"
 - "§eplay.yourserver.net"
