@@ -3,11 +3,11 @@
 namespace mm\tasks;
 
 use pocketmine\scheduler\Task;
-use mm\utils\SwordEntity;
+use mm\utils\IronSwordEntity;
 
 class DespawnSwordEntity extends Task{
 
-    public function __construct(SwordEntity $entity){
+    public function __construct(IronSwordEntity $entity){
         $this->sword = $entity;
     }
 
