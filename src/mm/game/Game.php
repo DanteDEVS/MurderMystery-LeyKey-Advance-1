@@ -169,7 +169,6 @@ class Game implements Listener{
 
         if(count($this->players) < 1){
             $this->phase = self::PHASE_WAITING    
-        }
     }        
  
     public function Starting(Player $player) : void{
@@ -177,7 +176,6 @@ class Game implements Listener{
 
         if(count($this->players) < 4){
             $this->phase = self::PHASE_LOBBY    
-        }
     }    
 
     public function removeScoreboard(Player $player){
