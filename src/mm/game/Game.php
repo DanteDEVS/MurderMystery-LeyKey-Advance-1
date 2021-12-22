@@ -171,13 +171,6 @@ class Game implements Listener{
             $this->phase = self::PHASE_WAITING    
     }        
  
-    public function Starting(Player $player) : void{
-        $this->phase = self::PHASE_LOBBY;
-
-        if(count($this->players) < 4){
-            $this->phase = self::PHASE_LOBBY    
-    }    
-
     public function removeScoreboard(Player $player){
         $removePacket = new RemoveObjectivePacket();
 
