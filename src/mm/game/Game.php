@@ -501,7 +501,7 @@ class Game implements Listener{
         $this->startRestart();
     }
 
-    public function startRestart(){
+    public function startRestart(Player $player) : void{
         $this->phase = self::PHASE_RESTART;
 
         foreach($this->map->getEntities() as $entity){
