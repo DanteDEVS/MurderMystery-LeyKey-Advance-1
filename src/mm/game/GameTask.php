@@ -18,7 +18,7 @@ class GameTask extends Task{
 
     public $startTime = 31;
     public $gameTime = 5 * 60;
-    public $restartTime = 5;
+    public $restartTime = 10;
 
     public $restartData = [];
 
@@ -222,12 +222,12 @@ class GameTask extends Task{
 
             case Game::PHASE_GAME:
                 $signText[2] = "§cAlready started";
-                $signText[3] = "";
+                $signText[3] = "§6Check back later";
             break;
 
             case Game::PHASE_RESTART:
                 $signText[2] = "§6Restarting...";
-                $signText[3] = "";
+                $signText[3] = "§cWait...";
             break;
         }
 
@@ -240,6 +240,6 @@ class GameTask extends Task{
     public function reloadTimer(){
         $this->startTime = 31;
         $this->gameTime = 5 * 60;
-        $this->restartTime = 5;
+        $this->restartTime = 10;
     }
 }
