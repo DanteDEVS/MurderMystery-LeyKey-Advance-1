@@ -54,9 +54,10 @@ use mm\tasks\{ArrowTask, CollideTask, CooldownTask, DespawnSwordEntity, SpawnGol
 
 class Game implements Listener{
 
-    const PHASE_LOBBY = 0;
-    const PHASE_GAME = 1;
-    const PHASE_RESTART = 2;
+    const PHASE_WAITING = 0;
+    const PHASE_LOBBY = 1;
+    const PHASE_GAME = 2;
+    const PHASE_RESTART = 3;
 
     public $plugin;
     public $task;
@@ -191,8 +192,14 @@ class Game implements Listener{
                 break;
 
                 case Game::PHASE_LOBBY:
-                    $this->createScoreboard($player, "§l§eMURDER MYSTERY", $this->plugin->getConfig()->get("LobbyScoreboard"));
+	            if(count($this->players) < 4){
+                       $this->createScoreboard($player, "§l§eMURDER MYSTERY", $this->plugin->getConfig()->get("LobbyScoreboard"));
                 break;
+			    
+		case Game::PHASE_WAITING:
+		    if(count($this->players) < 1){
+                       $this->createScoreboard($player, "§l§eMURDER MYSTERY", $this->plugin->getConfig()->get("WaitingScoreboard"));		     
+                break;	    
             }
         }
     }
