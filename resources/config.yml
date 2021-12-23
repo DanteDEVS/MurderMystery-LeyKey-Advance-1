@@ -62,7 +62,7 @@ GameScoreboard:
 # The scoreboard that gets displayed to players after a game
 RestartScoreboard:
 - "§7§r"
-- "§fRole: §aSpectator"
+- "§fRole: §aDead"
 - "§r"
 - "§fInnocents left: §a0"
 - "§fTime left: {rt}"
