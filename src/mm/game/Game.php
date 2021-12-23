@@ -192,13 +192,15 @@ class Game implements Listener{
                 break;
 
                 case Game::PHASE_LOBBY:
-	            if(count($this->players) < 4){
-                       $this->createScoreboard($player, "§l§eMURDER MYSTERY", $this->plugin->getConfig()->get("LobbyScoreboard"));
+		    foreach($this->players as $player){ 
+	                    if(count($this->players) < 4){
+                                $this->createScoreboard($player, "§l§eMURDER MYSTERY", $this->plugin->getConfig()->get("LobbyScoreboard"));
                 break;
 			    
 		case Game::PHASE_WAITING:
-		    if(count($this->players) < 1){
-                       $this->createScoreboard($player, "§l§eMURDER MYSTERY", $this->plugin->getConfig()->get("WaitingScoreboard"));		     
+		    foreach($this->players as $player){   
+		            if(count($this->players) < 1){
+                                $this->createScoreboard($player, "§l§eMURDER MYSTERY", $this->plugin->getConfig()->get("WaitingScoreboard"));		     
                 break;	    
             }
         }
