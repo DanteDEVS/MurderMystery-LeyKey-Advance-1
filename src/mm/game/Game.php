@@ -192,15 +192,11 @@ class Game implements Listener{
                 break;
 
                 case Game::PHASE_LOBBY:
-		    foreach($this->players as $player){ 
-	                    if(count($this->players) < 4){
-                                $this->createScoreboard($player, "§l§eMURDER MYSTERY", $this->plugin->getConfig()->get("LobbyScoreboard"));
+                    $this->createScoreboard($player, "§l§eMURDER MYSTERY", $this->plugin->getConfig()->get("LobbyScoreboard"));
                 break;
 			    
 		case Game::PHASE_WAITING:
-		    foreach($this->players as $player){   
-		            if(count($this->players) < 1){
-                                $this->createScoreboard($player, "§l§eMURDER MYSTERY", $this->plugin->getConfig()->get("WaitingScoreboard"));		     
+                    $this->createScoreboard($player, "§l§eMURDER MYSTERY", $this->plugin->getConfig()->get("WaitingScoreboard"));		     
                 break;	    
             }
         }
@@ -239,6 +235,8 @@ class Game implements Listener{
 
         return $role;
     }
+	
+    public function J
 
     public function joinLobby(Player $player){
         if(!$this->data["enabled"]){
@@ -330,7 +328,7 @@ class Game implements Listener{
         $player->setFlying(false);
         $player->setAllowFlight(false);
 	self::$bossbar = (new BossBar())->setPercentage(1);
-        self::$bossbar->setTitle(TextFormat::YELLOW . TextFormat::BOLD . "YourServerName" . TextFormat::GOLD . "Murder " . TextFormat::RED . "Mystery" . TextFormat::RESET . TextFormat::WHITE);
+        self::$bossbar->setTitle(TextFormat::YELLOW . TextFormat::BOLD . "YourServerName " . TextFormat::GOLD . "Murder " . TextFormat::RED . "Mystery" . TextFormat::RESET . TextFormat::WHITE);
         self::$bossbar->addPlayer($player);    
         unset($this->changeInv[$player->getName()]);
     }
