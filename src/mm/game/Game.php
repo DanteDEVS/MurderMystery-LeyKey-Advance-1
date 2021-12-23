@@ -338,10 +338,10 @@ class Game implements Listener{
         $player->setGamemode(0);
         $player->setFlying(false);
         $player->setAllowFlight(false);
+	self::$bossbar->removePlayer($player);    
         unset($this->changeInv[$player->getName()]);
         $player->teleport($this->plugin->getServer()->getDefaultLevel()->getSpawnLocation());
         $this->removeScoreboard($player);
-	self::$bossbar->removePlayer($player);
     }
 
     public function disconnectPlayer(Player $player, string $quitMsg = ""){
