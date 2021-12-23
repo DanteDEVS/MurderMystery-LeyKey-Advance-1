@@ -236,8 +236,6 @@ class Game implements Listener{
         return $role;
     }
 	
-    public function J
-
     public function joinLobby(Player $player){
         if(!$this->data["enabled"]){
             $player->sendMessage("§cThis game is currently unavailable, please try again later!");
