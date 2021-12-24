@@ -516,7 +516,6 @@ class Game implements Listener{
         }
         unset($this->murderer);
         unset($this->detective);
-	self::$bossbar->removePlayer($player);
     }
 	
     public function CloseDeadPlayer(Player $player) : void{
@@ -885,11 +884,11 @@ class Game implements Listener{
 
     public function checkGold(Player $player){
         if($this->isPlaying($player)){
-            if($player->getInventory()->contains(Item::get(Item::GOLD_INGOT, 0, 10))){
+            if($player->getInventory()->contains(Item::get(Item::GOLD_INGOT, 0, 20))){
                 $this->setItem(Item::BOW, 0, $player);
                 $this->changeInv[$player->getName()] = $player;
                 $player->getInventory()->addItem(Item::get(Item::ARROW, 0, 1));
-                $player->getInventory()->removeItem(Item::get(Item::GOLD_INGOT, 0, 10));
+                $player->getInventory()->removeItem(Item::get(Item::GOLD_INGOT, 0, 20));
                 unset($this->changeInv[$player->getName()]);
 
                 $player->addTitle("§a+1 Bow Shot!", "§eYou collected 10 gold and got an arrow!");
