@@ -146,7 +146,7 @@ class Game implements Listener{
         $packet = new SetScorePacket();
 
         if(count($this->players) < 4){
-            $status = str_replace("{st}", $this->task->startTime, $this->plugin->getConfig()->get("WaitingStatus"));
+            $status = str_replace("{st}", $this->startTime, $this->plugin->getConfig()->get("WaitingStatus"));
         } else {
             $status = $this->plugin->getConfig()->get("StartingStatus");
         }
