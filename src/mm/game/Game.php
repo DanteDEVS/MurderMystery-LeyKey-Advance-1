@@ -593,6 +593,7 @@ class Game implements Listener{
 		if($string == "pa"){
                     $this->interactDelay[$player->getName()] = microtime(true) + 0.5;
                     $this->getServer()->dispatchCommand($player, "mm join");
+			
                     }
                 }
                 return;
