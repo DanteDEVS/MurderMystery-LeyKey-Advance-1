@@ -589,9 +589,9 @@ class Game implements Listener{
                     if($this->phase == 1){
                         $this->interactDelay[$player->getName()] = microtime(true) + 0.5;
                         $this->openTeleporter($player);
-		}		  
-			    
-		if($string == "pa"){
+                }
+
+                if($string == "pa"){
                     if($this->phase == 1){
                         $this->interactDelay[$player->getName()] = microtime(true) + 0.5;
                         $this->openPlayAgain($player);
