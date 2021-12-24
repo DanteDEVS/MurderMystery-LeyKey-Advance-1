@@ -32,46 +32,46 @@ class CooldownTask extends Task{
     public function getCharacterColor($time){
         $time = round($time);
         if($time == 7){
-            return "§c||||||||||||||";
+            return "§b||||||||||||||";
         }
         if($time == 6.5){
-            return "§c|||||||||||||§a|";
+            return "§b|||||||||||||§a|";
         }
         if($time == 6){
-            return "§c||||||||||||§a||";
+            return "§b||||||||||||§a||";
         }
         if($time == 5.5){
-            return "§c|||||||||||§a|||";
+            return "§b|||||||||||§a|||";
         }
         if($time == 5){
-            return "§c||||||||||§a||||";
+            return "§b||||||||||§a||||";
         }
         if($time == 4.5){
-            return "§c|||||||||§a|||||";
+            return "§b|||||||||§a|||||";
         }
         if($time == 4){
-            return "§c||||||||§a||||||";
+            return "§b||||||||§a||||||";
         }
         if($time == 3.5){
-            return "§c|||||||§a|||||||";
+            return "§b|||||||§a|||||||";
         }
         if($time == 3){
-            return "§c||||||§a||||||||";
+            return "§b||||||§a||||||||";
         }
         if($time == 2.5){
-            return "§c|||||§a|||||||||";
+            return "§b|||||§a|||||||||";
         }
         if($time == 2){
-            return "§c||||§a||||||||||";
+            return "§b||||§a||||||||||";
         }
         if($time == 1.5){
-            return "§c|||§a|||||||||||";
+            return "§b|||§a|||||||||||";
         }
         if($time == 1){
-            return "§c||§a||||||||||||";
+            return "§b||§a||||||||||||";
         }
         if($time == 0.5){
-            return "§c|§a|||||||||||||";
+            return "§b|§a|||||||||||||";
         }
         if($time == 0){
             return "§a||||||||||||||";
