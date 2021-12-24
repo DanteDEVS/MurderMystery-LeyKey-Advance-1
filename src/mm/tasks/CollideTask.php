@@ -18,7 +18,7 @@ class CollideTask extends Task{
             foreach($this->plugin->players as $player){
                 if($this->sword->asVector3()->distance($player) < 2){
                     if($this->plugin->getMurderer() !== $player){
-                        $this->plugin->killPlayer($player, "§eThe Murderer threw their knife at you");
+                        $this->plugin->killPlayer($player, "§eMy man/murderer threw the sword at you");
                         $this->plugin->plugin->getScheduler()->scheduleDelayedTask(new DespawnSwordEntity($this->sword), 0);
                     }
                 }
