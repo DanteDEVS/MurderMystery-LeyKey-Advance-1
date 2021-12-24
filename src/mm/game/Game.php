@@ -591,9 +591,9 @@ class Game implements Listener{
                         $this->openTeleporter($player);
 			    
 		if($string == "pa"){
-                    $this->interactDelay[$player->getName()] = microtime(true) + 0.5;
-                    $this->getServer()->dispatchCommand($player, "mm join");
-			
+                    if($this->phase == 1){
+                        $this->interactDelay[$player->getName()] = microtime(true) + 0.5;
+                        $this->openPlayAgain($player);
                     }
                 }
                 return;
@@ -626,7 +626,28 @@ class Game implements Listener{
 
         $this->joinLobby($player);
     }
-
+		
+    public function openPlayAgain($player){
+	$api = $this->plugin->getServer()->getPluginManager()->getPlugin("FormAPI");
+	$form = new Form(function (Player $player, int $data = null) {	
+	    switch($data) {
+		case 0:
+                break;
+		case 1:
+		$this->getPlugin()->getServer()->dispatchCommand($player, "mm join");
+		break;
+		case 2:
+		break;
+	    }
+	});
+	$form->setTitle("§l§eTHEBRIDGE §r§6[BETA TESTING]");
+	$form->setContent("§fSelect team!");
+	$form->addButton("§l§cEXIT");
+	$form->addButton("§eNORMAL");
+	$form->addButton("§eINFECTION");
+	$player->sendForm($form);
+    }	
+	 
     public function openTeleporter($player){
         $api = $this->plugin->getServer()->getPluginManager()->getPlugin("FormAPI");
         $form = $api->createSimpleForm(function (Player $player, $data = null){
