@@ -33,8 +33,15 @@ WaitingStatus: §cWaiting for more players...
 #
 # Starting status
 StartingStatus: §aStarting in {st}s
-# if
-# The scoreboard that gets displayed to players in the waiting lobby
+# WaterDog proxy support
+# waterdog:
+  # Enable if you want connect player to random arena on join
+#  enabled: false
+  # Player will be reconnected to this server when he wants to leave the arena.
+#  lobbyServer: Lobby-1
+#
+#
+# Scoreboard
 LobbyScoreboard: 
 - "§7§r"
 - "§fPlayers: §a{players}/16"
