@@ -306,7 +306,8 @@ class Game implements Listener{
 		$tp->setNamedTagEntry(new StringTag("MurderMystery", "tp"));
 	
         $pa = Item::get(339, 0, 1);
-	$pa->setCustomName("§r§l§bPlay Again§r"); // Todo
+	$pa->setCustomName("§r§l§bPlay Again§r");
+	        $pa->setNamedTagEntry(new StringTag("MurderMystery", "pa"));
 
         $inv->setItem(8, $lobby);
         $inv->setItem(4, $tp);
@@ -588,6 +589,10 @@ class Game implements Listener{
                     if($this->phase == 1){
                         $this->interactDelay[$player->getName()] = microtime(true) + 0.5;
                         $this->openTeleporter($player);
+			    
+		if($string == "pa"){
+                    $this->interactDelay[$player->getName()] = microtime(true) + 0.5;
+                    $this->getServer()->dispatchCommand($player, "mm join");
                     }
                 }
                 return;
