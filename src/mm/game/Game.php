@@ -303,7 +303,7 @@ class Game implements Listener{
 	
         $pa = Item::get(339, 0, 1);
 	$pa->setCustomName("§r§l§bPlay Again§r");
-	        $pa->setNamedTagEntry(new StringTag("MurderMystery", "pa"));
+	        #$pa->setNamedTagEntry(new StringTag("MurderMystery", "pa")); // Todo
 
         $inv->setItem(8, $lobby);
         $inv->setItem(4, $tp);
