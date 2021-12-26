@@ -193,10 +193,6 @@ class Game implements Listener{
 
                 case Game::PHASE_LOBBY:
                     $this->createScoreboard($player, "§l§eMURDER MYSTERY", $this->plugin->getConfig()->get("LobbyScoreboard"));
-                break;
-			    
-		case Game::PHASE_WAITING:
-                    $this->createScoreboard($player, "§l§eMURDER MYSTERY", $this->plugin->getConfig()->get("WaitingScoreboard"));		     
                 break;	    
             }
         }
@@ -589,12 +585,6 @@ class Game implements Listener{
                     if($this->phase == 1){
                         $this->interactDelay[$player->getName()] = microtime(true) + 0.5;
                         $this->openTeleporter($player);
-                }
-
-                if($string == "pa"){
-                    if($this->phase == 1){
-                        $this->interactDelay[$player->getName()] = microtime(true) + 0.5;
-                        $this->openPlayAgain($player);
                     }
                 }
                 return;
